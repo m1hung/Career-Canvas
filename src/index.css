@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Playfair+Display:wght@400;700&family=Merriweather:wght@400;700&family=Montserrat:wght@400;500;700&family=Open+Sans:wght@400;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@media print {
+  @page {
+    size: auto;
+    margin: 0mm;
+  }
+  
+  body {
+    visibility: hidden;
+    background: white !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Ensure the resume document is the only thing visible and positioned at the top */
+  .min-h-screen,
+  main,
+  .preview-panel {
+    display: block !important;
+  }
+
+  .resume-document {
+    visibility: visible !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 20mm !important;
+    box-shadow: none !important;
+    background: white !important;
+    color: black !important;
+  }
+
+  /* Ensure all children of the resume document are visible */
+  .resume-document * {
+    visibility: visible !important;
+  }
+
+  /* Hide specific UI elements that might still be visible due to nesting */
+  header, 
+  nav, 
+  button, 
+  .lg\:hidden,
+  .inline-flex,
+  .flex-wrap {
+    display: none !important;
+  }
+}
+
+@layer utilities {
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #d4d4d8;
+    border-radius: 10px;
+  }
+  .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #3f3f46;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #a1a1aa;
+  }
+}
